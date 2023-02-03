@@ -1,10 +1,16 @@
 import "./App.css";
-import ProjectPage from "./projects/ts/ProjectsPage";
+import Box from "./projects/js/Box";
+import Clock from "./projects/js/Clock";
+import ClockDisplay from "./projects/js/ClockDisplay";
+import Data from "./projects/js/Data";
 
 function App() {
   return (
     <div className="container">
-      <ProjectPage/>
+      <ClockDisplay />
+      <Clock/>
+      <Box/>
+      <Data />
     </div>
   );
 }
