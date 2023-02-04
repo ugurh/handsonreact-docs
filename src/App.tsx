@@ -1,26 +1,19 @@
+import { useState } from "react";
 import "./App.css";
-import Box from "./projects/js/Box";
-import Clock from "./projects/js/Clock";
-import ClockClass from "./projects/js/ClockClass";
-import ClockDisplay from "./projects/js/ClockDisplay";
-import ClockTime from "./projects/js/ClockTime";
-import ConditionalRendering from "./projects/js/ConditionalRendering";
-import Data from "./projects/js/Data";
-import DropdownMenu from "./projects/js/DropdownMenu";
-import DropdownMenuC from "./projects/js/DropdownMenuC";
+import Increment from "./projects/js/Increment";
+import Result from "./projects/js/Result";
 
 function App() {
+  const [counter, setCounter] = useState(0);
+
+  const onIncrement = () => {
+    setCounter((previousCounter) => previousCounter + 1);
+  };
+
   return (
     <div className="container">
-      <DropdownMenuC /> 
-      <DropdownMenu />
-      <ConditionalRendering /> 
-      <ClockClass />
-      <ClockTime />
-      <ClockDisplay />
-      <Clock/>
-      <Box/>
-      <Data />
+      <Result counter={counter} />
+      <Increment onIncrement={onIncrement} />
     </div>
   );
 }
