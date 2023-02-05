@@ -1,17 +1,21 @@
 import ProjectCard from "./ProjectCard";
 import ProjectForm from "../../ProjectForm";
+import { useState } from "react";
 
 function ProjectList({ projects }) {
+  const [projectBeingEdited, setProjectBeingEdited] = useState({});
 
-     const onEdit = (project) => {
-         console.log(project);
-       };
-    
+  const onEdit = (project) => {
+    setProjectBeingEdited(project);
+  };
 
   const items = projects.map((project) => (
     <div key={project.id} className="cols-sm">
-      <ProjectCard project={project} onEdit={onEdit} />
-      <ProjectForm />
+      {project == projectBeingEdited ? (
+        <ProjectForm />
+      ) : (
+        <ProjectCard project={project} onEdit={onEdit} />
+      )}
     </div>
   ));
 

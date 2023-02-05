@@ -1,10 +1,13 @@
+import PropTypes from "prop-types";
+import Project from "../Project";
+
 function ProjectCard(props) {
   const { project, onEdit } = props;
 
   function editProject(project) {
     onEdit(project);
   }
-  
+
   return (
     <div className="card">
       <img src={project.imageUrl} alt={project.name} />
@@ -22,6 +25,11 @@ function ProjectCard(props) {
     </div>
   );
 }
+
+ProjectCard.propTypes = {
+  project: PropTypes.instanceOf(Project).isRequired,
+  onEdit: PropTypes.func.isRequired,
+};
 
 function formatDescription(description) {
   return description.substring(0, 60) + "...";
