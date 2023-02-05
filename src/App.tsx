@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import ProjectList from "./projects/js/ProjectList";
-import { MOCK_PROJECTS } from "./projects/MockProjects";
+import ProjectPage from "./projects/js/ProjectPage";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -12,7 +11,7 @@ function App() {
 
   return (
     <div className="container">
-     <ProjectList projects={MOCK_PROJECTS} />
+      <ProjectPage />
     </div>
   );
 }
