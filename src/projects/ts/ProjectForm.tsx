@@ -1,11 +1,19 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
+import Project from "../Project";
 
 interface ProjectFormProps {
+  onSave: (project: Project) => void;
   cancelEditing: () => void;
 }
-const ProjectForm = (props: ProjectFormProps) => {
+
+function ProjectForm({ onSave, cancelEditing }: ProjectFormProps) {
+  const handleSubmit = (event: SyntheticEvent) => {
+    event.preventDefault();
+    onSave(new Project({ name: "Updated Project" }));
+  };
+
   return (
-    <form className="input-group vertical">
+    <form className="input-group vertical" onSubmit={handleSubmit}>
       <label htmlFor="name">Project Name</label>
       <input type="text" name="name" placeholder="enter name" />
       <label htmlFor="description">Project Description</label>
@@ -20,13 +28,13 @@ const ProjectForm = (props: ProjectFormProps) => {
         <button
           type="button"
           className="bordered medium"
-          onClick={props.cancelEditing}
+          onClick={cancelEditing}
         >
           cancel
         </button>
       </div>
     </form>
   );
-};
+}
 
 export default ProjectForm;

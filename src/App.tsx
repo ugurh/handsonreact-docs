@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import ProjectList from "./projects/ts/ProjectList";
-import { MOCK_PROJECTS } from "./projects/MockProjects";
+import Project from "./projects/Project";
+import ProjectPage from "./projects/ts/ProjectsPage";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -9,10 +10,10 @@ function App() {
   const onIncrement = () => {
     setCounter((previousCounter) => previousCounter + 1);
   };
-
+  
   return (
     <div className="container">
-      <ProjectList projects={MOCK_PROJECTS} />
+      <ProjectPage />
     </div>
   );
 }
