@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import Increment from "./projects/js/Increment";
-import Result from "./projects/js/Result";
+import ProjectList from "./projects/js/ProjectList";
+import { MOCK_PROJECTS } from "./projects/MockProjects";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -12,8 +12,7 @@ function App() {
 
   return (
     <div className="container">
-      <Result counter={counter} />
-      <Increment onIncrement={onIncrement} />
+     <ProjectList projects={MOCK_PROJECTS} />
     </div>
   );
 }

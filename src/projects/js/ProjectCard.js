@@ -1,5 +1,10 @@
 function ProjectCard(props) {
-  const { project } = props;
+  const { project, onEdit } = props;
+
+  function editProject(project) {
+    onEdit(project);
+  }
+  
   return (
     <div className="card">
       <img src={project.imageUrl} alt={project.name} />
@@ -9,7 +14,7 @@ function ProjectCard(props) {
         </h5>
         <p>{formatDescription(project.description)}</p>
         <p>Budget : {project.budget.toLocaleString()}</p>
-        <button className="bordered" onClick={()=>editProject(project)}>
+        <button className="bordered" onClick={() => editProject(project)}>
           <span className="icon-edit "></span>
           Edit
         </button>
@@ -17,9 +22,7 @@ function ProjectCard(props) {
     </div>
   );
 }
-function editProject(project) {
-  console.log(project);
-}
+
 function formatDescription(description) {
   return description.substring(0, 60) + "...";
 }
