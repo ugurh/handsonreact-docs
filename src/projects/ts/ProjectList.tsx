@@ -6,10 +6,14 @@ interface ProjectListProps {
 }
 
 const ProjectList = ({ projects }: ProjectListProps) => {
+
+  const editProject = (project : Project) =>{
+    console.log(project)
+  }
   return (
     <div className="row">
       {projects.map((project) => (
-          <ProjectCard project={project} key={project.id} />
+          <ProjectCard project={project} key={project.id} editProject={editProject} />
       ))}
     </div>
   );

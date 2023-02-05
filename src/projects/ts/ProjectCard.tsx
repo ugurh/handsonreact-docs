@@ -4,9 +4,10 @@ import ProjectForm from "./ProjectForm";
 
 interface ProjectCardProps {
   project: Project;
+  editProject: (project : Project) => void
 }
 
-const ProjectCard = ({ project }: ProjectCardProps) => {
+const ProjectCard = ({ project, editProject }: ProjectCardProps) => {
   return (
     <div key={project.id} className="cols-sm">
       <div className="card">
@@ -20,7 +21,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           <button
             className="bordered"
             onClick={() => {
-              editClick(project);
+              editProject(project);
             }}
           >
             <span className="icon-edit "></span>
