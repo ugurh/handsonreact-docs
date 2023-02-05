@@ -1,10 +1,8 @@
-import React from "react";
 import Project from "../Project";
-import ProjectForm from "./ProjectForm";
 
 interface ProjectCardProps {
   project: Project;
-  editProject: (project : Project) => void
+  editProject: (project: Project) => void;
 }
 
 const ProjectCard = ({ project, editProject }: ProjectCardProps) => {
@@ -29,13 +27,8 @@ const ProjectCard = ({ project, editProject }: ProjectCardProps) => {
           </button>
         </section>
       </div>
-      <ProjectForm />
     </div>
   );
-};
-
-const editClick = (project: Project) => {
-  console.log(project);
 };
 
 export default ProjectCard;
