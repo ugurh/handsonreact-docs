@@ -1,8 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import ProjectList from "./projects/ts/ProjectList";
-import Project from "./projects/Project";
-import ProjectPage from "./projects/ts/ProjectsPage";
+import Clock2 from "./projects/js/Clock2";
+import SideEffect from "./projects/js/SideEffect";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -10,10 +9,11 @@ function App() {
   const onIncrement = () => {
     setCounter((previousCounter) => previousCounter + 1);
   };
-  
+
   return (
     <div className="container">
-      <ProjectPage />
+      <SideEffect />
+      <Clock2 />
     </div>
   );
 }
