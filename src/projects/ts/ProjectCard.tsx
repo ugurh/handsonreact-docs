@@ -1,4 +1,4 @@
-import Project from "../Project";
+import Project from "./Project";
 
 interface ProjectCardProps {
   project: Project;

@@ -1,5 +1,5 @@
 import ProjectCard from "./ProjectCard";
-import ProjectForm from "../../ProjectForm";
+import ProjectForm from "../ts/ProjectForm";
 import PropTypes from "prop-types";
 import { useState } from "react";
 

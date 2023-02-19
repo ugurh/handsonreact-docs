@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Project from "./projects/Project";
+import Project from "../ts/Project";
 
 function ProjectForm(props) {
   const { onCancel , onSave } = props;

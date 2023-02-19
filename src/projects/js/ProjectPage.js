@@ -1,6 +1,6 @@
 import React from "react";
 import ProjectList from "./ProjectList";
-import { MOCK_PROJECTS } from "../MockProjects";
+import { MOCK_PROJECTS } from "../ts/MockProjects";
 
 const ProjectPage = () => {
 

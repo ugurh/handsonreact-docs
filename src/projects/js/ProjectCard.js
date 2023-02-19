@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Project from "../Project";
+import Project from "../ts/Project";
 
 function ProjectCard(props) {
   const { project, onEdit } = props;
