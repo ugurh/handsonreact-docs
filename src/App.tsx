@@ -1,9 +1,10 @@
 import "./App.css";
-import FileInput from "./projects/js/FileInput";
+import Container from "./projects/js/Container";
+
 function App() {
   return (
     <div>
-      <FileInput />
+      <Container />
     </div>
   );
 }
