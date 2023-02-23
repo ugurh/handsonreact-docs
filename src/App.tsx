@@ -1,9 +1,9 @@
 import "./App.css";
-import FormExample from "./projects/js/FormExample";
+import FileInput from "./projects/js/FileInput";
 function App() {
   return (
     <div>
-      <FormExample />
+      <FileInput />
     </div>
   );
 }
