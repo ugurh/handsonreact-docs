@@ -1,10 +1,10 @@
 import "./App.css";
-import Container from "./projects/js/Container";
+import PhotoList from "./projects/js/PhotoList";
 
 function App() {
   return (
     <div>
-      <Container />
+      <PhotoList />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import Form from "./Form";
 import ID from "./ID";
 import { Item } from "./Item";
@@ -11,9 +11,9 @@ const initialItems = [
 ];
 
 const Container = () => {
-  const [items, setItems] = React.useState([]);
+  const [items, setItems] = useState([]);
 
-  React.useEffect(() => setItems(initialItems), []);
+  useEffect(() => setItems(initialItems), []);
 
   const addItem = (item) => {
     setItems([...items, item]);
@@ -29,15 +29,15 @@ const Container = () => {
   };
 
   const removeItem = (removeThisItem) => {
-    const filteredItems = items.filter((item) => item.id != removeThisItem.id);
+    const filteredItems = items.filter((item) => item.id !== removeThisItem.id);
     setItems(filteredItems);
   };
 
   return (
-    <React.Fragment>
+    <>
       <Form item="" onSubmit={addItem} buttonValue="Add" />
       <List items={items} onRemove={removeItem} onUpdate={updateItem} />
-    </React.Fragment>
+    </>
   );
 };
 
