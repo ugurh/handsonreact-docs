@@ -19,8 +19,8 @@ export const projectAPI = {
         );
       });
   },
-  async addProject(project) {
-    const res = await axios.post(`${baseUrl}/projects`, { project });
+  async updateProject(project) {
+    const res = await axios.put(`${baseUrl}/projects`, { project });
     console.log(res);
     return res.data;
   },

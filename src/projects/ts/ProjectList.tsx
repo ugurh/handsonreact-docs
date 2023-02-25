@@ -27,6 +27,7 @@ const ProjectList = ({ projects, onSave }: ProjectListProps) => {
             cancelEditing={cancelEditing}
             onSave={onSave}
             key={project.id}
+            project={project}
           />
         ) : (
           <ProjectCard
