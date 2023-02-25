@@ -1,13 +1,16 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import Project from "../ts/Project";
+import ErrorCard from "./ErrorCard";
 
 function ProjectForm(props) {
   const { onCancel, onSave, project: initialProject } = props;
   const [project, setProject] = useState(initialProject);
+  const [error, setError] = useState({ name: "", description: "", budget: "" });
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!isValid()) return;
     onSave(project);
   };
 
@@ -34,6 +37,32 @@ function ProjectForm(props) {
       updatedProject = new Project({ ...p, ...change });
       return updatedProject;
     });
+    setError(() => valide(updatedProject));
+  };
+
+  const valide = (project) => {
+    let error = { name: "", description: "", budget: "" };
+    if (project.name.length === 0) {
+      error.name = "Name is required";
+    }
+    if (project.name.length > 0 && project.name.length < 3) {
+      error.name = "Name needs to be at least 3 characters.";
+    }
+    if (project.description.length === 0) {
+      error.description = "Description is required.";
+    }
+    if (project.budget <= 0) {
+      error.budget = "Budget must be more than $0.";
+    }
+    return error;
+  };
+
+  const isValid = () => {
+    return (
+      error.name.length === 0 &&
+      error.description.length === 0 &&
+      error.budget.length === 0
+    );
   };
 
   return (
@@ -46,6 +75,7 @@ function ProjectForm(props) {
         value={project.name}
         onChange={handleChange}
       />
+      {error.name.length > 0 && <ErrorCard errorMessage={error.name} />}
       <label htmlFor="description">Project Description</label>
       <textarea
         name="description"
@@ -53,6 +83,9 @@ function ProjectForm(props) {
         value={project.description}
         onChange={handleChange}
       />
+      {error.description.length > 0 && (
+        <ErrorCard errorMessage={error.description} />
+      )}
       <label htmlFor="budget">Project Budget</label>
       <input
         type="number"
@@ -61,6 +94,8 @@ function ProjectForm(props) {
         value={project.budget}
         onChange={handleChange}
       />
+      {error.budget.length > 0 && <ErrorCard errorMessage={error.budget} />}
+
       <label htmlFor="isActive">Active?</label>
       <input
         type="checkbox"

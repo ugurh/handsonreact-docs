@@ -7,7 +7,7 @@ const ProjectPage = () => {
 
   const saveProject = (project) => {
     let updatedProjects = projects.map((p) => {
-      return (p.id = project.id ? project : p);
+      return (p.id === project.id ? project : p);
     });
     setProjects(updatedProjects);
   };
