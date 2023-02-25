@@ -1,6 +1,6 @@
 const ErrorCard = ({errorMessage}) => {
     return (
-        <div class="card error">
+        <div className="card error">
               <p>{errorMessage}</p>
         </div>
     );

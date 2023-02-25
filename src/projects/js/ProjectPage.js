@@ -1,21 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ErrorCardLarge from "./ErrorCardLarge";
+import LoadingSpinner from "./LoadingSpinner";
+import { projectAPI } from "./projectAPI";
 import ProjectList from "./ProjectList";
-import { MOCK_PROJECTS } from "../ts/MockProjects";
 
 const ProjectPage = () => {
-  const [projects, setProjects] = useState(MOCK_PROJECTS);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(undefined);
+
+  useEffect(() => {
+    loadProjects();
+  }, []);
+
+  const loadProjects = async () => {
+    setLoading(true);
+    try {
+      const data = await projectAPI.getProjects(1, 2);
+      setError(null);
+      setProjects(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const saveProject = (project) => {
     let updatedProjects = projects.map((p) => {
-      return (p.id === project.id ? project : p);
+      return p.id === project.id ? project : p;
     });
     setProjects(updatedProjects);
   };
 
   return (
-    <div>
+    <>
+      {error && <ErrorCardLarge error={error} />}
       <ProjectList projects={projects} onSave={saveProject} />
-    </div>
+      {loading && <LoadingSpinner />}
+    </>
   );
 };
 

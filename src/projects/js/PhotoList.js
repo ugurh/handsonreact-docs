@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { photoAPI } from "./PhotosApi";
+import { photoAPI } from "./photoApi";
 
 const PhotoList = () => {
   const [loading, setLoading] = useState(false);

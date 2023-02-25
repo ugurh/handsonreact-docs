@@ -17,3 +17,10 @@ code {
 form {
   min-width: 300px;
 }
+
+.center-page {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
