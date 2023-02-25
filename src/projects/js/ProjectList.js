@@ -1,7 +1,7 @@
 import ProjectCard from "./ProjectCard";
-import ProjectForm from "../ts/ProjectForm";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import ProjectForm from "./ProjectForm";
 
 function ProjectList({ projects, onSave }) {
   const [projectBeingEdited, setProjectBeingEdited] = useState({});
@@ -17,7 +17,7 @@ function ProjectList({ projects, onSave }) {
   const items = projects.map((project) => (
     <div key={project.id} className="cols-sm">
       {project === projectBeingEdited ? (
-        <ProjectForm  onCancel={cancelEditingProject} onSave = {onSave} />
+        <ProjectForm  onCancel={cancelEditingProject} onSave = {onSave} project={project}/>
       ) : (
         <ProjectCard project={project} onEdit={editProject} />
       )}

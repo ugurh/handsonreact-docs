@@ -1,10 +1,10 @@
 import "./App.css";
-import PhotoList from "./projects/js/PhotoList";
+import ProjectPage from "./projects/js/ProjectPage";
 
 function App() {
   return (
     <div>
-      <PhotoList />
+      <ProjectPage />
     </div>
   );
 }
