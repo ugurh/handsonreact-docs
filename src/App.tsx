@@ -1,10 +1,10 @@
 import "./App.css";
-import ProjectPage from "./projects/ts/ProjectsPage";
+import Routing from "./projects/js/Routing";
 
 function App() {
   return (
     <div>
-      <ProjectPage />
+      <Routing />
     </div>
   );
 }
