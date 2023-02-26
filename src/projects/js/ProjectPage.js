@@ -1,55 +1,56 @@
-import { useEffect, useState } from "react";
-import ErrorCardLarge from "./ErrorCardLarge";
-import LoadingSpinner from "./LoadingSpinner";
-import PagingButton from "./PagingButton";
-import { projectAPI } from "./projectAPI";
-import ProjectList from "./ProjectList";
+import React, { useEffect, useState } from 'react';
+import { projectAPI } from './projectAPI';
+import ProjectDetail from './ProjectDetail';
+import { useParams } from 'react-router-dom';
 
 const ProjectPage = () => {
-  const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(undefined);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [project, setProject] = useState(null);
+  const [error, setError] = useState(null);
+  const params = useParams();
+  const id = Number(params.id);
 
   useEffect(() => {
-    loadProjects();
-  }, [currentPage]);
-
-  const loadProjects = async () => {
     setLoading(true);
-    try {
-      const data = await projectAPI.getProjects(currentPage, 2);
-      setError(null);
-      if (currentPage === 1) {
-        setProjects(data);
-      } else {
-        setProjects((projects) => [...projects, ...data]);
-      }
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const saveProject = (project) => {
-    let updatedProjects = projects.map((p) => {
-      return p.id === project.id ? project : p;
-    });
-    setProjects(updatedProjects);
-  };
-
-  const handleMoreClick = () => {
-    setCurrentPage((currentPage) => currentPage + 1);
-  };
+    projectAPI
+      .find(id)
+      .then((data) => {
+        setProject(data);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setError(e);
+        setLoading(false);
+      });
+  }, [id]);
 
   return (
-    <>
-      {error && <ErrorCardLarge error={error} />}
-      <ProjectList projects={projects} onSave={saveProject} />
-      {loading && <LoadingSpinner />}
-      {!loading && !error && <PagingButton handleMoreClick={handleMoreClick} />}
-    </>
+    <div>
+      <>
+        <h1>Project Detail</h1>
+
+        {loading && (
+          <div className="center-page">
+            <span className="spinner primary"></span>
+            <p>Loading...</p>
+          </div>
+        )}
+
+        {error && (
+          <div className="row">
+            <div className="card large error">
+              <section>
+                <p>
+                  <span className="icon-alert inverse "></span> {error}
+                </p>
+              </section>
+            </div>
+          </div>
+        )}
+
+        {project && <ProjectDetail project={project} />}
+      </>
+    </div>
   );
 };
 

@@ -6,6 +6,7 @@ import {
   NavLink,
 } from "react-router-dom";
 import Home from "./projects/js/Home";
+import ProjectsPage from "./projects/js/ProjectsPage";
 import ProjectPage from "./projects/js/ProjectPage";
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<ProjectPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/projects/:id" element={<ProjectPage />} />
         </Routes>
       </div>
     </Router>

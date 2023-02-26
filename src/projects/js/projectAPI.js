@@ -24,4 +24,17 @@ export const projectAPI = {
     console.log(res);
     return res.data;
   },
+  async find(id) {
+    return axios
+      .get(`${baseUrl}/projects/${id}`)
+      .then((res) => {
+        return new Project(res.data);
+      })
+      .catch((error) => {
+        console.log("log client error " + error);
+        throw new Error(
+          "There was an error retrieving the projects. Please try again."
+        );
+      });
+  },
 };
