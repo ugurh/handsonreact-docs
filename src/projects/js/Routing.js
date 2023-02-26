@@ -9,7 +9,11 @@ import {
 import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
+import { movies } from "./MockMovies";
+import MovieDetail from "./MovieDetail";
+import MovieList from "./MovieList";
 import NotFound from "./NotFound";
+
 
 const Routing = () => {
   return (
@@ -26,6 +30,9 @@ const Routing = () => {
             <li>
               <NavLink to="/contact">Contact</NavLink>
             </li>
+            <li>
+              <NavLink to="/movies">Movies</NavLink>
+            </li>
           </ul>
         </nav>
 
@@ -34,6 +41,8 @@ const Routing = () => {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/about" element={<About />} />
             <Route exact path="/contact" element={<Contact />} />
+            <Route path="movies" element={<MovieList movies={movies} />} />
+            <Route path="movies/:id" element={<MovieDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
