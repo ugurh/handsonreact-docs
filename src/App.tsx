@@ -6,8 +6,8 @@ import {
   NavLink,
 } from "react-router-dom";
 import Home from "./projects/js/Home";
+import ProjectPage from "./projects/ts/ProjectsPage";
 import ProjectsPage from "./projects/js/ProjectsPage";
-import ProjectPage from "./projects/js/ProjectPage";
 
 function App() {
   return (
