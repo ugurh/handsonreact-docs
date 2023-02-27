@@ -6,8 +6,9 @@ import {
   NavLink,
 } from "react-router-dom";
 import Home from "./projects/js/Home";
-import ProjectPage from "./projects/ts/ProjectsPage";
+import ProjectPage from "./projects/js/ProjectsPage";
 import ProjectsPage from "./projects/js/ProjectsPage";
+import Contex from "./projects/js/contex/Contex";
 
 function App() {
   return (
@@ -23,12 +24,16 @@ function App() {
         <NavLink to="/projects" className="button rounded">
           Projects
         </NavLink>
+        <NavLink to="/contex" className="button rounded">
+          Contex
+        </NavLink>
       </header>
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:id" element={<ProjectPage />} />
+          <Route path="/contex" element={<Contex />} />
         </Routes>
       </div>
     </Router>
