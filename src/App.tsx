@@ -9,6 +9,9 @@ import Home from "./projects/js/Home";
 import ProjectPage from "./projects/js/ProjectsPage";
 import ProjectsPage from "./projects/js/ProjectsPage";
 import Contex from "./projects/js/contex/Contex";
+import SplitPane from "./projects/js/composition/SplitPane";
+import Contacts from "./projects/js/composition/Contacts";
+import Chat from "./projects/js/composition/Chat";
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
         <NavLink to="/contex" className="button rounded">
           Contex
         </NavLink>
+        <NavLink to="/composition" className="button rounded">
+          Composition
+        </NavLink>
       </header>
       <div className="container">
         <Routes>
@@ -34,6 +40,10 @@ function App() {
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:id" element={<ProjectPage />} />
           <Route path="/contex" element={<Contex />} />
+          <Route
+            path="/composition"
+            element={<SplitPane left={<Contacts />} right={<Chat />} />}
+          />
         </Routes>
       </div>
     </Router>
