@@ -12,6 +12,7 @@ import Contex from "./projects/js/contex/Contex";
 import SplitPane from "./projects/js/composition/SplitPane";
 import Contacts from "./projects/js/composition/Contacts";
 import Chat from "./projects/js/composition/Chat";
+import SignUpDialog from "./projects/js/composition/SignUpDialog";
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
         <NavLink to="/composition" className="button rounded">
           Composition
         </NavLink>
+        <NavLink to="/singup" className="button rounded">
+          SignUp
+        </NavLink>
       </header>
       <div className="container">
         <Routes>
@@ -44,6 +48,7 @@ function App() {
             path="/composition"
             element={<SplitPane left={<Contacts />} right={<Chat />} />}
           />
+          <Route path="singup" element={<SignUpDialog />} />
         </Routes>
       </div>
     </Router>
