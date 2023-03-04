@@ -5,6 +5,7 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
+
 import Home from "./projects/js/Home";
 import ProjectPage from "./projects/js/ProjectsPage";
 import ProjectsPage from "./projects/js/ProjectsPage";
@@ -13,6 +14,8 @@ import SplitPane from "./projects/js/composition/SplitPane";
 import Contacts from "./projects/js/composition/Contacts";
 import Chat from "./projects/js/composition/Chat";
 import SignUpDialog from "./projects/js/composition/SignUpDialog";
+import Example from "./projects/js/react_query/Example";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {
   return (
@@ -37,6 +40,9 @@ function App() {
         <NavLink to="/singup" className="button rounded">
           SignUp
         </NavLink>
+        <NavLink to="/react-query" className="button rounded">
+          React Query
+        </NavLink>
       </header>
       <div className="container">
         <Routes>
@@ -49,6 +55,14 @@ function App() {
             element={<SplitPane left={<Contacts />} right={<Chat />} />}
           />
           <Route path="singup" element={<SignUpDialog />} />
+          <Route
+            path="react-query"
+            element={
+              <QueryClientProvider client={new QueryClient()}>
+                <Example />
+              </QueryClientProvider>
+            }
+          />
         </Routes>
       </div>
     </Router>
