@@ -1,4 +1,4 @@
-const Boxx = (props) => {
+const RenderProps = (props) => {
   return (
     <div style={{ width: 250, height: 100, border: "1px solid black" }}>
       {props.render && props.render()}
@@ -7,4 +7,4 @@ const Boxx = (props) => {
   );
 };
 
-export default Boxx;
+export default RenderProps;

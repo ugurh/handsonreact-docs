@@ -16,7 +16,7 @@ import Chat from "./projects/js/composition/Chat";
 import SignUpDialog from "./projects/js/composition/SignUpDialog";
 import Example from "./projects/js/react_query/Example";
 import { QueryClient, QueryClientProvider } from "react-query";
-import Boxx from "./projects/js/Boxx";
+import RenderProps from "./projects/js/RenderProps";
 
 function App() {
   return (
@@ -69,7 +69,7 @@ function App() {
           />
           <Route
             path="/boxx"
-            element={<Boxx render={() => <h3>Jack</h3>}><h3>Jack From Children</h3></Boxx>}
+            element={<RenderProps render={() => <h3>Jack</h3>}><h3>Jack From Children</h3></RenderProps>}
           />
         </Routes>
       </div>
