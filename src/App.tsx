@@ -16,6 +16,7 @@ import Chat from "./projects/js/composition/Chat";
 import SignUpDialog from "./projects/js/composition/SignUpDialog";
 import Example from "./projects/js/react_query/Example";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Boxx from "./projects/js/Boxx";
 
 function App() {
   return (
@@ -43,6 +44,9 @@ function App() {
         <NavLink to="/react-query" className="button rounded">
           React Query
         </NavLink>
+        <NavLink to="/boxx" className="button rounded">
+          Render Props
+        </NavLink>
       </header>
       <div className="container">
         <Routes>
@@ -62,6 +66,10 @@ function App() {
                 <Example />
               </QueryClientProvider>
             }
+          />
+          <Route
+            path="/boxx"
+            element={<Boxx render={() => <h3>Jack</h3>}><h3>Jack From Children</h3></Boxx>}
           />
         </Routes>
       </div>
