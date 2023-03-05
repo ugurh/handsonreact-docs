@@ -17,6 +17,10 @@ import SignUpDialog from "./projects/js/composition/SignUpDialog";
 import Example from "./projects/js/react_query/Example";
 import { QueryClient, QueryClientProvider } from "react-query";
 import RenderProps from "./projects/js/RenderProps";
+import Inner from "./projects/js/hoc/Inner";
+import { wrapper } from "./projects/js/hoc/wrapper";
+
+const Outer = wrapper(Inner, 'Peace');
 
 function App() {
   return (
@@ -47,6 +51,9 @@ function App() {
         <NavLink to="/boxx" className="button rounded">
           Render Props
         </NavLink>
+        <NavLink to="/hoc" className="button rounded">
+         HOC
+        </NavLink>
       </header>
       <div className="container">
         <Routes>
@@ -71,6 +78,7 @@ function App() {
             path="/boxx"
             element={<RenderProps render={() => <h3>Jack</h3>}><h3>Jack From Children</h3></RenderProps>}
           />
+          <Route path="hoc" element={<Outer />}/>
         </Routes>
       </div>
     </Router>
